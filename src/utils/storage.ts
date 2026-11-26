@@ -3,14 +3,19 @@ import { MoodId, NoteCategory, NoteItem } from '../types/note';
 
 const STORAGE_KEY = 'notes_to_myself_v1';
 const VALID_MOODS: MoodId[] = [
-  'charcoal',
+  'cobalt',
   'midnight',
-  'espresso',
-  'pine',
-  'plum',
   'ocean',
+  'pine',
+  'charcoal',
+  'espresso',
+  'plum',
   'amber',
   'ash',
+  'paper',
+  'sky',
+  'mint',
+  'linen',
 ];
 
 export function loadNotes(): NoteItem[] {

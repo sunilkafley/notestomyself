@@ -155,48 +155,48 @@ export default function App() {
   const filterOptions: CategoryFilter[] = ['All', ...NOTE_CATEGORIES];
 
   return (
-    <div className="min-h-[100dvh] bg-[#0B1120] text-[#F9FAFB] relative">
-      {/* Atmospheric midnight-blue ambient glow & subtle film grain */}
+    <div className="min-h-[100dvh] bg-[#F8FAFC] text-[#0F172A] relative">
+      {/* Subtle sunlit sky accent wash */}
       <div
-        className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.16),transparent_62%)] pointer-events-none"
+        className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.08),transparent_60%)] pointer-events-none"
         aria-hidden="true"
       />
-      <div className="fixed inset-0 film-grain pointer-events-none opacity-60" aria-hidden="true" />
 
-      {/* Top Navigation Bar */}
-      <header className="relative md:sticky md:top-0 z-30 bg-[#0B1120]/88 backdrop-blur-md border-b border-sky-200/10">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-14 md:h-16 flex items-center justify-between gap-4 md:gap-8">
+      {/* Top Navigation Bar: safe-area-inset-top padding ensures clickable header below iOS Dynamic Island/notch in PWA standalone mode */}
+      <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-slate-200 pt-[env(safe-area-inset-top)]">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 min-h-[56px] md:min-h-[64px] flex items-center justify-between gap-4 md:gap-8">
           {/* Zone 1: Single text element wordmark */}
-          <a
-            href="#top"
-            className="text-lg font-extrabold tracking-[-0.02em] text-[#F9FAFB] whitespace-nowrap shrink-0 min-h-[44px] flex items-center"
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="text-lg font-extrabold tracking-[-0.02em] text-slate-900 whitespace-nowrap shrink-0 min-h-[44px] flex items-center cursor-pointer"
           >
             Notes to Myself
-          </a>
+          </button>
 
           {/* Zone 2: Clean single-line text links (desktop) */}
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-400">
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
             <button
               type="button"
               onClick={() => {
                 if (filteredNotes.length > 0) setReaderIndex(0);
               }}
               disabled={filteredNotes.length === 0}
-              className="hover:text-[#F9FAFB] hover:underline underline-offset-4 disabled:opacity-40 disabled:pointer-events-none transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="hover:text-slate-900 hover:underline underline-offset-4 disabled:opacity-40 disabled:pointer-events-none transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
               Story Mode
             </button>
             <button
               type="button"
               onClick={handleExportJson}
-              className="hover:text-[#F9FAFB] hover:underline underline-offset-4 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="hover:text-slate-900 hover:underline underline-offset-4 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
               Export JSON
             </button>
             <button
               type="button"
               onClick={() => importInputRef.current?.click()}
-              className="hover:text-[#F9FAFB] hover:underline underline-offset-4 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="hover:text-slate-900 hover:underline underline-offset-4 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
               Import JSON
             </button>
@@ -207,7 +207,7 @@ export default function App() {
             <button
               type="button"
               onClick={handleOpenNewCapture}
-              className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 text-sm font-bold text-[#0B1120] bg-[#FDE047] hover:bg-[#FEF08A] rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FDE047] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1120]"
+              className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 text-sm font-bold text-white bg-[#2563EB] hover:bg-[#1D4ED8] rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               <Plus className="w-4 h-4 stroke-[2.5]" />
               Capture Note
@@ -219,7 +219,7 @@ export default function App() {
                 if (filteredNotes.length > 0) setReaderIndex(0);
               }}
               disabled={filteredNotes.length === 0}
-              className="md:hidden inline-flex items-center px-3 min-h-[44px] text-xs font-semibold text-slate-200 hover:text-white disabled:opacity-40 whitespace-nowrap shrink-0 cursor-pointer"
+              className="md:hidden inline-flex items-center px-3 min-h-[44px] text-xs font-semibold text-[#2563EB] hover:text-[#1D4ED8] disabled:opacity-40 whitespace-nowrap shrink-0 cursor-pointer"
             >
               Story Mode
             </button>
@@ -241,36 +241,36 @@ export default function App() {
         className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 pt-6 sm:pt-12 pb-28 md:pb-20"
       >
         {/* Quiet Editorial Lead */}
-        <section className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 sm:pb-8 border-b border-sky-200/10">
+        <section className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 sm:pb-8 border-b border-slate-200">
           <div className="max-w-2xl">
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-[-0.025em] text-[#F9FAFB] [text-wrap:balance]">
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-[-0.025em] text-slate-900 [text-wrap:balance]">
               Words worth{' '}
-              <span className="font-hand font-semibold text-[#FDE047] text-[1.22em] leading-none">
+              <span className="font-hand font-semibold text-slate-900 bg-[#FEF08A] px-2.5 py-0.5 rounded-lg inline-block -rotate-1 text-[1.18em] leading-none">
                 keeping.
               </span>
             </h1>
-            <p className="mt-2 text-sm sm:text-[15px] leading-relaxed text-slate-400">
+            <p className="mt-3 text-sm sm:text-[15px] leading-relaxed text-slate-600">
               Overheard conversations, late-night advice, and quiet reminders saved locally in your browser. Tap any card for fullscreen reading or screenshots.
             </p>
           </div>
 
           <div className="flex items-center justify-between gap-3 md:justify-end">
             {/* Mobile JSON backup triggers with 44px touch targets */}
-            <div className="flex md:hidden items-center gap-1 text-xs font-medium text-slate-400 -ml-2">
+            <div className="flex md:hidden items-center gap-1 text-xs font-medium text-slate-600 -ml-2">
               <button
                 type="button"
                 onClick={handleExportJson}
-                className="px-2 min-h-[44px] flex items-center hover:text-white whitespace-nowrap shrink-0 cursor-pointer"
+                className="px-2 min-h-[44px] flex items-center hover:text-slate-900 whitespace-nowrap shrink-0 cursor-pointer"
               >
                 Export JSON
               </button>
-              <span aria-hidden="true" className="text-slate-700">
+              <span aria-hidden="true" className="text-slate-300">
                 ·
               </span>
               <button
                 type="button"
                 onClick={() => importInputRef.current?.click()}
-                className="px-2 min-h-[44px] flex items-center hover:text-white whitespace-nowrap shrink-0 cursor-pointer"
+                className="px-2 min-h-[44px] flex items-center hover:text-slate-900 whitespace-nowrap shrink-0 cursor-pointer"
               >
                 Import JSON
               </button>
@@ -282,7 +282,7 @@ export default function App() {
 
         {/* Search & Category Filter Toolbar */}
         <section className="py-5 sm:py-6 flex flex-col lg:flex-row lg:items-center justify-between gap-3 sm:gap-4">
-          <div className="flex items-center gap-1 p-1 bg-[#111A2E] border border-sky-200/10 rounded-xl overflow-x-auto no-scrollbar">
+          <div className="flex items-center gap-1 p-1 bg-white border border-slate-200 rounded-xl shadow-2xs overflow-x-auto no-scrollbar">
             {filterOptions.map((category) => {
               const active = activeCategory === category;
               return (
@@ -292,8 +292,8 @@ export default function App() {
                   onClick={() => setActiveCategory(category)}
                   className={`px-3.5 min-h-[40px] sm:min-h-[36px] text-xs font-semibold rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                     active
-                      ? 'bg-[#1D2B4A] text-[#F9FAFB]'
-                      : 'text-slate-400 hover:text-slate-200'
+                      ? 'bg-slate-900 text-white'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                   }`}
                 >
                   {category}
@@ -304,20 +304,20 @@ export default function App() {
 
           <div className="flex items-center gap-3 sm:gap-4">
             <div className="relative flex-1 sm:w-72">
-              <Search className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search quotes or sources..."
                 aria-label="Search quotes or sources"
-                className="w-full min-h-[44px] rounded-xl bg-[#111A2E] border border-sky-200/10 pl-10 pr-10 py-2 text-base sm:text-sm text-[#F9FAFB] placeholder:text-slate-500 focus:outline-none focus:border-[#FDE047]/60 focus:ring-1 focus:ring-[#FDE047]/60"
+                className="w-full min-h-[44px] rounded-xl bg-white border border-slate-200 pl-10 pr-10 py-2 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 shadow-2xs focus:outline-none focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB]"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-1 top-1/2 -translate-y-1/2 min-w-[38px] min-h-[38px] flex items-center justify-center text-slate-400 hover:text-white cursor-pointer"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 min-w-[38px] min-h-[38px] flex items-center justify-center text-slate-400 hover:text-slate-700 cursor-pointer"
                   aria-label="Clear search"
                 >
                   <X className="w-4 h-4" />
@@ -329,13 +329,13 @@ export default function App() {
               type="button"
               onClick={() => setSortOrder((prev) => (prev === 'newest' ? 'oldest' : 'newest'))}
               aria-label={`Sort order: ${sortOrder === 'newest' ? 'Newest First' : 'Oldest First'}. Click to switch.`}
-              className="inline-flex items-center gap-1.5 px-3.5 min-h-[44px] rounded-xl bg-[#111A2E] border border-sky-200/10 hover:border-sky-200/25 text-xs font-semibold text-slate-200 hover:text-white transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FDE047]"
+              className="inline-flex items-center gap-1.5 px-3.5 min-h-[44px] rounded-xl bg-white border border-slate-200 hover:border-slate-300 text-xs font-semibold text-slate-700 hover:text-slate-900 shadow-2xs transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
             >
-              <ArrowUpDown className="w-3.5 h-3.5 text-slate-400" />
+              <ArrowUpDown className="w-3.5 h-3.5 text-slate-500" />
               {sortOrder === 'newest' ? 'Newest First' : 'Oldest First'}
             </button>
 
-            <span className="text-xs font-medium text-slate-400 tabular-nums whitespace-nowrap shrink-0">
+            <span className="text-xs font-medium text-slate-500 tabular-nums whitespace-nowrap shrink-0">
               {filteredNotes.length} {filteredNotes.length === 1 ? 'note' : 'notes'}
             </span>
           </div>
@@ -357,11 +357,11 @@ export default function App() {
             ))}
           </section>
         ) : (
-          <section className="my-10 rounded-2xl border border-sky-200/10 bg-[#111A2E] px-6 py-14 text-center max-w-xl mx-auto">
-            <h2 className="text-xl font-bold tracking-tight text-[#F9FAFB]">
+          <section className="my-10 rounded-2xl border border-slate-200 bg-white px-6 py-14 text-center max-w-xl mx-auto shadow-xs">
+            <h2 className="text-xl font-bold tracking-tight text-slate-900">
               {notes.length === 0 ? 'Your journal is empty' : 'No matching notes'}
             </h2>
-            <p className="mt-2 text-sm text-slate-400">
+            <p className="mt-2 text-sm text-slate-600">
               {notes.length === 0
                 ? 'Capture a meaningful line from today, or restore the three starter notes.'
                 : 'Try clearing your search keyword or switching back to all categories.'}
@@ -372,14 +372,14 @@ export default function App() {
                   <button
                     type="button"
                     onClick={handleOpenNewCapture}
-                    className="px-5 min-h-[44px] text-sm font-bold text-[#0B1120] bg-[#FDE047] hover:bg-[#FEF08A] rounded-lg transition-colors cursor-pointer"
+                    className="px-5 min-h-[44px] text-sm font-bold text-white bg-[#2563EB] hover:bg-[#1D4ED8] rounded-lg transition-colors cursor-pointer"
                   >
                     Capture First Note
                   </button>
                   <button
                     type="button"
                     onClick={handleRestoreSamples}
-                    className="px-4 min-h-[44px] text-sm font-medium text-slate-300 hover:text-white border border-sky-200/15 rounded-lg transition-colors cursor-pointer"
+                    className="px-4 min-h-[44px] text-sm font-medium text-slate-700 hover:text-slate-900 border border-slate-200 rounded-lg transition-colors cursor-pointer"
                   >
                     Restore Samples
                   </button>
@@ -391,7 +391,7 @@ export default function App() {
                     setSearchQuery('');
                     setActiveCategory('All');
                   }}
-                  className="px-5 min-h-[44px] text-sm font-semibold text-[#0B1120] bg-[#FDE047] hover:bg-[#FEF08A] rounded-lg transition-colors cursor-pointer"
+                  className="px-5 min-h-[44px] text-sm font-semibold text-white bg-[#2563EB] hover:bg-[#1D4ED8] rounded-lg transition-colors cursor-pointer"
                 >
                   Reset Filters
                 </button>
@@ -406,7 +406,7 @@ export default function App() {
         <button
           type="button"
           onClick={handleOpenNewCapture}
-          className="inline-flex items-center gap-2 px-5 min-h-[48px] text-sm font-bold text-[#0B1120] bg-[#FDE047] hover:bg-[#FEF08A] active:scale-[0.97] rounded-xl shadow-[0_8px_28px_rgba(0,0,0,0.65)] transition-transform whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FDE047] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1120]"
+          className="inline-flex items-center gap-2 px-5 min-h-[48px] text-sm font-bold text-white bg-[#2563EB] hover:bg-[#1D4ED8] active:scale-[0.97] rounded-xl shadow-[0_10px_28px_rgba(37,99,235,0.35)] transition-transform whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8FAFC]"
         >
           <Plus className="w-4 h-4 stroke-[2.5]" />
           Capture Note
@@ -448,10 +448,10 @@ export default function App() {
         <div
           role="status"
           aria-live="polite"
-          className={`fixed top-[max(1rem,env(safe-area-inset-top))] inset-x-4 sm:inset-x-auto sm:top-auto sm:bottom-5 sm:right-5 z-50 px-4 py-3 sm:py-2.5 rounded-xl border text-xs font-semibold shadow-xl text-center sm:text-left ${
+          className={`fixed top-[max(1rem,calc(env(safe-area-inset-top)+0.5rem))] inset-x-4 sm:inset-x-auto sm:top-auto sm:bottom-5 sm:right-5 z-50 px-4 py-3 sm:py-2.5 rounded-xl border text-xs font-semibold shadow-lg text-center sm:text-left ${
             toast.tone === 'error'
-              ? 'bg-rose-950/95 border-rose-500/40 text-rose-200'
-              : 'bg-[#111A2E]/95 border-sky-200/15 text-[#F9FAFB]'
+              ? 'bg-rose-50 border-rose-200 text-rose-800'
+              : 'bg-white border-slate-200 text-slate-900'
           }`}
         >
           {toast.text}

@@ -8,14 +8,14 @@
 @layer base {
   html {
     font-family: var(--font-sans);
-    background-color: #0B1120;
-    color: #F9FAFB;
+    background-color: #F8FAFC;
+    color: #0F172A;
   }
 
   body {
     min-height: 100vh;
     min-height: 100dvh;
-    background-color: #0B1120;
+    background-color: #F8FAFC;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
   }

@@ -5,18 +5,26 @@ export type NoteCategory =
   | 'Book/Podcast';
 
 export type MoodId =
-  | 'charcoal'
+  | 'cobalt'
   | 'midnight'
-  | 'espresso'
-  | 'pine'
-  | 'plum'
   | 'ocean'
+  | 'pine'
+  | 'charcoal'
+  | 'espresso'
+  | 'plum'
   | 'amber'
-  | 'ash';
+  | 'ash'
+  | 'paper'
+  | 'sky'
+  | 'mint'
+  | 'linen';
+
+export type CardTone = 'dark' | 'light';
 
 export interface MoodPreset {
   id: MoodId;
   label: string;
+  tone: CardTone;
   gradientClass: string;
   swatchStyle: string;
 }

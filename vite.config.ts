@@ -19,8 +19,8 @@ export default defineConfig(() => {
           short_name: 'Notes',
           description:
             'A personal, distraction-free editorial journal for capturing quotes, overheard wisdom, and life lessons.',
-          theme_color: '#0B1120',
-          background_color: '#0B1120',
+          theme_color: '#F8FAFC',
+          background_color: '#F8FAFC',
           display: 'standalone',
           start_url: '/',
           scope: '/',

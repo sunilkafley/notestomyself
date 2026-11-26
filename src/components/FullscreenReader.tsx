@@ -69,7 +69,6 @@ export function FullscreenReader({
     touchStartX.current = null;
     touchStartY.current = null;
 
-    // Require predominantly horizontal swipe > 48px
     if (Math.abs(deltaX) > 48 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25) {
       if (deltaX < 0 && hasNext) {
         onChangeIndex(activeIndex + 1);
@@ -83,7 +82,7 @@ export function FullscreenReader({
 
   return (
     <div
-      className="fixed inset-0 z-50 min-h-[100dvh] bg-[#060B16]/96 backdrop-blur-md flex flex-col justify-between px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))] sm:p-6 overflow-y-auto"
+      className="fixed inset-0 z-50 min-h-[100dvh] bg-[#F8FAFC]/96 backdrop-blur-md flex flex-col justify-between px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-[max(1rem,env(safe-area-inset-bottom))] sm:p-6 overflow-y-auto"
       role="dialog"
       aria-modal="true"
       aria-label="Fullscreen story reader"
@@ -94,7 +93,7 @@ export function FullscreenReader({
       <div className="flex items-center justify-between gap-2 sm:gap-4 max-w-5xl w-full mx-auto min-h-[44px]">
         {!cleanMode ? (
           <>
-            <span className="text-xs sm:text-sm font-medium text-slate-400 tabular-nums whitespace-nowrap shrink-0">
+            <span className="text-xs sm:text-sm font-semibold text-slate-500 tabular-nums whitespace-nowrap shrink-0">
               {activeIndex + 1} / {notes.length}
             </span>
 
@@ -102,17 +101,17 @@ export function FullscreenReader({
               <button
                 type="button"
                 onClick={() => setCleanMode(true)}
-                className="inline-flex items-center justify-center gap-1.5 px-3 min-h-[44px] text-xs font-semibold text-zinc-200 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+                className="inline-flex items-center justify-center gap-1.5 px-3 min-h-[44px] text-xs font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-200 rounded-lg shadow-xs transition-colors whitespace-nowrap shrink-0 cursor-pointer"
                 title="Hide controls for clean screenshots"
               >
                 <EyeOff className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
-                <span className="hidden xs:inline sm:inline">Clean View</span>
+                <span>Clean View</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => onEdit(currentNote)}
-                className="inline-flex items-center justify-center gap-1.5 px-3 min-h-[44px] text-xs font-semibold text-zinc-200 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+                className="inline-flex items-center justify-center gap-1.5 px-3 min-h-[44px] text-xs font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-200 rounded-lg shadow-xs transition-colors whitespace-nowrap shrink-0 cursor-pointer"
                 aria-label="Edit note"
               >
                 <Pencil className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
@@ -123,25 +122,25 @@ export function FullscreenReader({
                 <button
                   type="button"
                   onClick={() => setConfirmDelete(true)}
-                  className="inline-flex items-center justify-center gap-1.5 px-3 min-h-[44px] text-xs font-semibold text-zinc-300 hover:text-rose-300 bg-white/5 hover:bg-rose-500/10 border border-white/10 rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+                  className="inline-flex items-center justify-center gap-1.5 px-3 min-h-[44px] text-xs font-semibold text-slate-600 hover:text-rose-600 bg-white hover:bg-rose-50 border border-slate-200 rounded-lg shadow-xs transition-colors whitespace-nowrap shrink-0 cursor-pointer"
                   aria-label="Delete note"
                 >
                   <Trash2 className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
                   <span className="hidden sm:inline">Delete</span>
                 </button>
               ) : (
-                <div className="flex items-center gap-1 bg-rose-500/15 border border-rose-500/30 rounded-lg px-1.5 min-h-[44px]">
+                <div className="flex items-center gap-1 bg-rose-50 border border-rose-200 rounded-lg px-1.5 min-h-[44px]">
                   <button
                     type="button"
                     onClick={() => onDelete(currentNote.id)}
-                    className="px-2.5 min-h-[36px] text-xs font-bold text-rose-200 hover:text-white cursor-pointer whitespace-nowrap shrink-0"
+                    className="px-2.5 min-h-[36px] text-xs font-bold text-rose-700 hover:text-rose-900 cursor-pointer whitespace-nowrap shrink-0"
                   >
                     Confirm
                   </button>
                   <button
                     type="button"
                     onClick={() => setConfirmDelete(false)}
-                    className="px-2 min-h-[36px] text-xs font-medium text-zinc-300 hover:text-white cursor-pointer whitespace-nowrap shrink-0"
+                    className="px-2 min-h-[36px] text-xs font-medium text-slate-600 hover:text-slate-900 cursor-pointer whitespace-nowrap shrink-0"
                   >
                     Cancel
                   </button>
@@ -151,7 +150,7 @@ export function FullscreenReader({
               <button
                 type="button"
                 onClick={onClose}
-                className="min-w-[44px] min-h-[44px] flex items-center justify-center text-zinc-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-colors cursor-pointer shrink-0"
+                className="min-w-[44px] min-h-[44px] flex items-center justify-center text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-100 border border-slate-200 rounded-lg shadow-xs transition-colors cursor-pointer shrink-0"
                 aria-label="Close reader"
               >
                 <X className="w-5 h-5 sm:w-4 sm:h-4" />
@@ -163,7 +162,7 @@ export function FullscreenReader({
             <button
               type="button"
               onClick={() => setCleanMode(false)}
-              className="inline-flex items-center gap-1.5 px-3 min-h-[44px] text-xs font-medium text-zinc-400 hover:text-white rounded-lg opacity-45 hover:opacity-100 transition-opacity cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 min-h-[44px] text-xs font-medium text-slate-500 hover:text-slate-900 rounded-lg opacity-55 hover:opacity-100 transition-opacity cursor-pointer"
             >
               <Eye className="w-3.5 h-3.5" />
               Show Controls
@@ -179,7 +178,7 @@ export function FullscreenReader({
             type="button"
             disabled={!hasPrev}
             onClick={() => onChangeIndex(activeIndex - 1)}
-            className="hidden sm:flex items-center justify-center w-11 h-11 rounded-full bg-white/5 border border-white/10 text-zinc-200 hover:bg-white/10 disabled:opacity-20 disabled:pointer-events-none transition-colors cursor-pointer shrink-0"
+            className="hidden sm:flex items-center justify-center w-11 h-11 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 shadow-xs disabled:opacity-25 disabled:pointer-events-none transition-colors cursor-pointer shrink-0"
             aria-label="Previous note"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -195,7 +194,7 @@ export function FullscreenReader({
             type="button"
             disabled={!hasNext}
             onClick={() => onChangeIndex(activeIndex + 1)}
-            className="hidden sm:flex items-center justify-center w-11 h-11 rounded-full bg-white/5 border border-white/10 text-zinc-200 hover:bg-white/10 disabled:opacity-20 disabled:pointer-events-none transition-colors cursor-pointer shrink-0"
+            className="hidden sm:flex items-center justify-center w-11 h-11 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 shadow-xs disabled:opacity-25 disabled:pointer-events-none transition-colors cursor-pointer shrink-0"
             aria-label="Next note"
           >
             <ChevronRight className="w-5 h-5" />
@@ -212,7 +211,7 @@ export function FullscreenReader({
                 type="button"
                 disabled={!hasPrev}
                 onClick={() => onChangeIndex(activeIndex - 1)}
-                className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 min-h-[44px] text-xs font-semibold rounded-xl bg-white/5 border border-white/10 text-zinc-200 disabled:opacity-30 cursor-pointer"
+                className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 min-h-[44px] text-xs font-semibold rounded-xl bg-white border border-slate-200 text-slate-800 shadow-xs disabled:opacity-35 cursor-pointer"
               >
                 <ChevronLeft className="w-4 h-4" />
                 Previous
@@ -221,16 +220,16 @@ export function FullscreenReader({
                 type="button"
                 disabled={!hasNext}
                 onClick={() => onChangeIndex(activeIndex + 1)}
-                className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 min-h-[44px] text-xs font-semibold rounded-xl bg-white/5 border border-white/10 text-zinc-200 disabled:opacity-30 cursor-pointer"
+                className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 min-h-[44px] text-xs font-semibold rounded-xl bg-white border border-slate-200 text-slate-800 shadow-xs disabled:opacity-35 cursor-pointer"
               >
                 Next
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
-            <p className="sm:hidden text-[11px] text-zinc-500">
+            <p className="sm:hidden text-[11px] text-slate-500">
               Swipe card left or right to flip notes
             </p>
-            <p className="hidden sm:block text-xs text-zinc-500">
+            <p className="hidden sm:block text-xs text-slate-500">
               Use arrow keys to flip through notes · Esc to exit
             </p>
           </>
